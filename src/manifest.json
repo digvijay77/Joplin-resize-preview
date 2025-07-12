@@ -1,0 +1,16 @@
+{
+	"manifest_version": 1,
+	"id": "com.plugin.resizePreview",
+	"app_min_version": "3.3",
+	"version": "1.0.0",
+	"name": "Resize Preview",
+	"description": "With this plugin you will be able to resize the preview in the markdown mode",
+	"author": "DigvijayB",
+	"homepage_url": "",
+	"repository_url": "",
+	"keywords": [],
+	"categories": [],
+	"screenshots": [],
+	"icons": {},
+	"promo_tile": {}
+}
