@@ -3,13 +3,11 @@ function injectCss() {
 
     const styles = `
         .custom-resizer-handle {
-            background-color: #333;
+            background-color: #c4c4c4;
             cursor: col-resize;
             width: 6px;
             flex-shrink: 0;
             position: relative;
-            border-left: 1px solid #222;
-            border-right: 1px solid #222;
             transition: background-color 0.2s ease;
         }
 
@@ -85,13 +83,13 @@ function setupResizer(leftPane, rightPane) {
             // Set both panes explicitly to prevent jumping
             leftPane.style.width = `${newLeftWidth}px`;
             leftPane.style.flexBasis = `${newLeftWidth}px`;
-            leftPane.style.flexGrow = '0';
-            leftPane.style.flexShrink = '0';
+            leftPane.style.flexGrow = '1';
+            leftPane.style.flexShrink = '1';
             
             rightPane.style.width = `${newRightWidth}px`;
             rightPane.style.flexBasis = `${newRightWidth}px`;
-            rightPane.style.flexGrow = '0';
-            rightPane.style.flexShrink = '0';
+            rightPane.style.flexGrow = '1';
+            rightPane.style.flexShrink = '1';
         }
     };
 
