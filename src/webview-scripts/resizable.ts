@@ -35,13 +35,13 @@ function injectCss() {
 }
 
 function initializeResizer() {
-    console.log('Initializing resizer script');
+    // console.log('Initializing resizer script');
     injectCss();
 
     const interval = setInterval(() => {
         const editorPane = document.querySelector('.rli-editor .note-editor-viewer-row .editor');
         const previewPane = document.querySelector('.rli-editor .note-editor-viewer-row .viewer');
-        console.log('Checking for editor and preview panes:', editorPane, previewPane);
+        // console.log('Checking for editor and preview panes:', editorPane, previewPane);
 
         if (editorPane && previewPane) {
             clearInterval(interval); // Stop checking
@@ -51,7 +51,7 @@ function initializeResizer() {
 }
 
 function setupResizer(leftPane, rightPane) {
-    console.log('Setting up resizer between:', leftPane, rightPane);
+    // console.log('Setting up resizer between:', leftPane, rightPane);
     // Prevent adding multiple resizers if the script runs again
     if (document.getElementById('custom-resizer')) return;
 
