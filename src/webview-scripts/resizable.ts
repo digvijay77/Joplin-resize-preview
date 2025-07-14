@@ -51,6 +51,7 @@ function initializeResizer() {
 }
 
 function setupResizer(leftPane, rightPane) {
+    injectCss();
     // console.log('Setting up resizer between:', leftPane, rightPane);
     // Prevent adding multiple resizers if the script runs again
     if (document.getElementById('custom-resizer')) return;
@@ -124,4 +125,40 @@ function setupResizer(leftPane, rightPane) {
     });
 }
 
-initializeResizer();
+
+/**
+ * This function checks if the editor exists and if the resizer is missing.
+ * If so, it calls setupResizer to add it.
+ */
+function ensureResizerExists() {
+    const editorPane = document.querySelector('.rli-editor .note-editor-viewer-row .editor');
+    const previewPane = document.querySelector('.rli-editor .note-editor-viewer-row .viewer');
+    const resizerExists = document.getElementById('custom-resizer');
+
+    // If the panes exist but the resizer doesn't, add it.
+    if (editorPane && previewPane && !resizerExists) {
+        // console.log('Editor found, adding resizer...');
+        setupResizer(editorPane, previewPane);
+    }
+}
+
+/**
+ * The main logic. We use a MutationObserver to watch for changes in the app's body.
+ * This is far more efficient than a setInterval.
+ */
+function initializeObserver() {
+    // The observer will call ensureResizerExists whenever nodes are added/removed from the body.
+    const observer = new MutationObserver(ensureResizerExists);
+
+    // Start observing the entire document body for changes to the child list.
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true // Also watch descendants
+    });
+
+    // Run an initial check in case the editor is already there when the script loads.
+    ensureResizerExists();
+}
+
+
+initializeObserver();
